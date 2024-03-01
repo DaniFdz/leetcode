@@ -6,26 +6,20 @@ class Solution:
         s = []
 
         for t in tokens:
-            match t:
-                case "+":
-                    n2 = s.pop()
-                    n1 = s.pop()
-                    x = n1 + n2
-                case "-":
-                    n2 = s.pop()
-                    n1 = s.pop()
-                    x = n1 - n2
-                case "*":
-                    n2 = s.pop()
-                    n1 = s.pop()
-                    x = n1 * n2
-                case "/":
-                    n2 = s.pop()
-                    n1 = s.pop()
-                    x = n1 / n2
-                case _:
-                    x = t
-            s.append(int(x))
+            if len(t) == 1 and ord(t) < 48:
+                n2 = s.pop()
+                n1 = s.pop()
+                match t:
+                    case "+":
+                        t = n1 + n2
+                    case "-":
+                        t = n1 - n2
+                    case "*":
+                        t = n1 * n2
+                    case "/":
+                        t = n1 / n2
+
+            s.append(int(t))
 
         return s.pop()
 

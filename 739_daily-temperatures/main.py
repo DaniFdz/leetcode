@@ -5,15 +5,11 @@ class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         s = []
         r = [0]*len(temperatures)
-
         for i,x in enumerate(temperatures):
-            while len(s) > 0 and x > s[-1][1]:
-                e, _ = s.pop()
-
+            while s and x > temperatures[s[-1]]:
+                e = s.pop()
                 r[e] = i-e
-
-            s.append((i,x))
-
+            s.append(i)
         return r
 
 

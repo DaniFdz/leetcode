@@ -10,7 +10,7 @@ class Solution:
             j = i
             visited = {i}
             v = [i]
-            while edges[j] != -1:
+            while not j in memo and edges[j] != -1:
                 j = edges[j]
                 if j in visited:
                     found = -1
